@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Button : MonoBehaviour {
     SpriteRenderer spriteRenderer;
@@ -9,6 +10,7 @@ public class Button : MonoBehaviour {
     public GameObject defenderPrefab;   
     public static GameObject selectedDefender;
 
+    private Text costText;
     private Button[] buttonArray;
 
     private void Start()
@@ -19,6 +21,13 @@ public class Button : MonoBehaviour {
 
         spriteRenderer.color = Color.black;
         buttonArray = FindObjectsOfType<Button>();
+
+        costText = GetComponentInChildren<Text>();
+        if (!costText) {
+            Debug.Log("cost Text for " + name + " not found");
+        }
+        costText.text = defenderPrefab.GetComponent<Defender>().starCost.ToString();
+
     }
 
 
