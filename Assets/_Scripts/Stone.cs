@@ -17,7 +17,8 @@ public class Stone : MonoBehaviour {
 
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+
+    void OnTriggerStay2D(Collider2D collision)
     {
         
         GameObject obj = collision.gameObject;
@@ -25,7 +26,7 @@ public class Stone : MonoBehaviour {
         if (!obj.GetComponent<Attacker>()) {
             return;
         } 
-        animator.SetBool("isAttacked", true);
+        animator.SetTrigger("UnderAttack Trigger");
 
     }
 }
